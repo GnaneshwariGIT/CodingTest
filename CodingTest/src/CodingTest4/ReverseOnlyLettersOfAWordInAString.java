@@ -1,29 +1,32 @@
 package CodingTest4;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class ReverseOnlyLettersOfAWordInAString {
 
-	private static String reverse() {
-		String string = null;
-	    if (string.isEmpty()) {
-	        return string;
-	    }
-	    int last = string.length();
-	    StringBuilder sb = new StringBuilder(string.length());
-	    boolean contextspace = ' ' == string.charAt(string.length() - 1);
-	    for (int i = string.length() - 1; i >= 0; i--) {
-	        if (contextspace != (string.charAt(i) == ' ')) {
-	            sb.append(string.substring(i + 1, last));
-	            last = i + 1;
-	            contextspace = !contextspace;
-	        }
-	    }
-	    sb.append(string.substring(0, last));
-	    return sb.toString();
-	}
-	public static void main(String[] args) {
-		ReverseOnlyLettersOfAWordInAString.reverse();
-	}
+	public static void main(String[] args)throws IOException {
+       
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter the string to be reversed");
+        String OriginalString=br.readLine();
+        char ReversedString;
+        int k=0;        
+        for(int i=0;i<OriginalString.length();i++)
+        {           
+            if(OriginalString.charAt(i)==32 ||i==OriginalString.length()-1)
+            {
+                for(int j=i;j>=k;j--)
+                {
+                	ReversedString=OriginalString.charAt(j);
+                    System.out.print(ReversedString);
+                }
+                k=i;
+                continue;
+            }             
+        }
+    }
 }
 
 
